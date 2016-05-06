@@ -1,0 +1,22 @@
+.clear{
+	clear: both;
+}
+
+.ball{
+	float: left;
+	width: 20px;
+	padding: 5px;
+	text-align: center;
+	color: #fff;
+	background: #000;
+	margin-left: 5px;
+	border-radius: 50%;
+}
+
+.default{
+	background: #ff0000;
+}
+
+.initial-order, .specified-time{
+	padding-top: 15px;
+}

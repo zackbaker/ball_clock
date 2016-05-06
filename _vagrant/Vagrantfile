@@ -1,0 +1,60 @@
+# The most common configuration options are documented and commented below.
+# For a complete reference, please see the online documentation at
+# https://docs.vagrantup.com.
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Establish changable variables
+$MEM                = "1024"
+$IP                 = "192.168.2.27"
+$VAGRANT_VERSION    = 2
+
+$once = <<ONCE
+    sudo apt-get update
+    sudo apt-get upgrade -y
+    sudo apt-get install php5 -y
+    sudo apt-get install golang -y
+    
+
+    # Setting up virtual host
+    cp /var/www/ball_clock/_vagrant/provision/ball_clock.conf /etc/apache2/sites-enabled/ball_clock.conf
+    
+    # Setup conf files for hosting
+    sudo a2ensite ball_clock.conf
+
+    sudo service apache2 restart
+ONCE
+
+Vagrant.configure($VAGRANT_VERSION) do |config|
+
+    # Every Vagrant development environment requires a box. You can search for
+    # boxes at https://atlas.hashicorp.com/search.
+    # config.vm.box = "ubuntu/trusty64"
+    # In case trusty64 doesn't work
+    config.vm.box = "ubuntu/trusty32"
+
+    # Create a forwarded port mapping which allows access to a specific port
+    # within the machine from a port on the host machine. In the example below,
+    # accessing "localhost:8080" will access port 80 on the guest machine.
+    # config.vm.network "forwarded_port", guest: 80, host: 8080
+
+    # Create a private network, which allows host-only access to the machine
+    # using a specific IP.
+    config.vm.network "private_network", ip: $IP
+
+    # Share an additional folder to the guest VM. The first argument is
+    # the path on the host to the actual folder. The second argument is
+    # the path on the guest to mount the folder. And the optional third
+    # argument is a set of non-required options.
+      config.vm.synced_folder "../", "/var/www/ball_clock"
+
+    config.vm.provider "virtualbox" do |vb|
+        vb.name = "ball_clock"
+        vb.memory = $MEM
+        
+        config.vm.provision "once", type: "shell", inline: $once
+        
+        # turn on for debugging when vagrant is failing
+        # vb.gui = true
+    end
+end

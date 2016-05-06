@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title> Ball Clock </title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script src="/js/ball_clock.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/ball_clock.css">
+	</head>
+	<body>
+		<h1> Ball Clock </h1>
+		<div class="min clear">
+			<strong> Minutes: </strong>
+			<div class="balls"></div>
+		</div>
+		<div class="fiveMin clear">
+			<strong> Five Minutes: </strong>
+			<div class="balls"></div>
+		</div>
+		<div class="hour clear">
+			<strong> Hours: </strong>
+			<div class="balls">
+				<div class="ball default">D</div>
+			</div>
+		</div>
+		<div class="main clear">
+			<strong> Queue: </strong>
+			<div class="balls"></div>
+		</div>
+
+		<div class="initial-order clear">
+			Please choose a number of balls between 27 and 127 to see how many days it'll take before the balls return to their original order.
+			<br />
+			<input type="text" class="ball-number" placeholder="number of balls" /> 
+			<input type="submit" class="intial-submit" />
+			<br />
+			<div class="day-amount"></div>
+		</div>
+
+		<div class="specified-time clear">
+			please enter a number of balls and minutes to see the order of balls after this time in the form of JSON
+			<br />
+			<input type="text" class="ball-number" placeholder="number of balls" />
+			<input type="text" class="minutes" placeholder="minutes" />
+			<input type="submit" class="specified-time-submit" />
+			<br />
+			<div class="json-order"></div>
+		</div>
+	</body>
+</html>
