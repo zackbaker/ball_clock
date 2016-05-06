@@ -5,7 +5,7 @@
 </p>
 
 <p>
-	Come to find out PHP doesn't do too well with recursion. I had to make pretty much everything into one function which makes the code look quite sloppy, but it was either do it this way or it wouldn't work.
+	Come to find out PHP doesn't do too well with recursion. I had to make pretty much everything into one function which makes the code look quite sloppy, but it was do it this way or it wouldn't work.
 </p>
 
 <p>
